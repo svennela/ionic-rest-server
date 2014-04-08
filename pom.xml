@@ -10,7 +10,6 @@
     <properties>
         <java-version>1.6</java-version>
         <org.springframework-version>3.2.4.RELEASE</org.springframework-version>
-        <org.springframework.security-version>3.2.0.RC1</org.springframework.security-version>
         <org.codehaus.jackson-version>1.9.12</org.codehaus.jackson-version>
         <org.slf4j-version>1.6.1</org.slf4j-version>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -44,20 +43,6 @@
             <version>1.9</version>
         </dependency>
 
-        <!-- guava -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>15.0</version>
-        </dependency>
-
-        <!-- lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.12.2</version>
-        </dependency>
-
         <!-- spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -87,99 +72,6 @@
             <version>${org.springframework-version}</version>
         </dependency>
 
-        <!-- spring security -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-            <version>${org.springframework.security-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>${org.springframework.security-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>${org.springframework.security-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-taglibs</artifactId>
-            <version>${org.springframework.security-version}</version>
-        </dependency>
-
-        <!-- spring mobile -->
-        <dependency>
-            <groupId>org.springframework.mobile</groupId>
-            <artifactId>spring-mobile-device</artifactId>
-            <version>1.1.0.RELEASE</version>
-        </dependency>
-
-        <!-- spring data -->
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>1.4.2.RELEASE</version>
-        </dependency>
-
-        <!-- spring-data envers: see https://github.com/spring-projects/spring-data-envers -->
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-envers</artifactId>
-            <version>0.1.0.RELEASE</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.data</groupId>
-                    <artifactId>spring-data-commons-core</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!-- hibernate -->
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <version>1.0.0.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.2.6.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-envers</artifactId>
-            <version>4.2.6.Final</version>
-        </dependency>
-
-        <!-- used as embedded test db -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.3.174</version>
-        </dependency>
-
-        <!-- mysql -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.26 </version>
-        </dependency>
-
-        <!-- db connection pool -->
-        <!--<dependency>-->
-            <!--<groupId>commons-dbcp</groupId>-->
-            <!--<artifactId>commons-dbcp</artifactId>-->
-            <!--<version>1.4</version>-->
-        <!--</dependency>-->
-
-        <dependency>
-            <groupId>c3p0</groupId>
-            <artifactId>c3p0</artifactId>
-            <version>0.9.1.2</version>
-        </dependency>
-
         <!-- for json rest api -->
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
@@ -187,18 +79,12 @@
             <version>2.3.0</version>
         </dependency>
 
-
-        <!-- servlet/jstl -->
+        <!-- servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.0.1</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
         </dependency>
 
         <!-- Logging -->
@@ -226,13 +112,6 @@
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
             <version>2.0.0</version>
-        </dependency>
-
-        <!-- time utils -->
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>2.0</version>
         </dependency>
 
         <!-- junit -->
@@ -300,28 +179,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>de.juplo</groupId>
-                <artifactId>hibernate4-maven-plugin</artifactId>
-                <version>1.0.3</version>
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<goals>-->
-                            <!--<goal>export</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-                <configuration>
-                    <force>true</force>
-                    <outputFile>./sql/schema.sql</outputFile>
-                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
-                    <hibernateDialect>org.hibernate.dialect.MySQLDialect</hibernateDialect>
-                    <url><![CDATA[jdbc:mysql://127.0.0.1:3306/ionic-rest]]></url>
-                    <username>root</username>
-                    <password></password>
-                </configuration>
             </plugin>
 
         </plugins>
