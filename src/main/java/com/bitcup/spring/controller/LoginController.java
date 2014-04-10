@@ -19,7 +19,9 @@ public class LoginController {
 
     @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
     @ResponseBody
-    public UserKey login(@RequestBody User user, HttpServletResponse response) {
+    public UserKey login(@RequestBody User user, HttpServletResponse response) throws Exception {
+        // simulate delay to test UI loader/spinner
+        Thread.sleep(2000);
         logger.info("inside login - user: " + user);
         if (user.getUsername().equals("test") && user.getPassword().equals("test")) {
             return new UserKey("abc", "1234567890");
